@@ -1,24 +1,54 @@
-import { useEffect, useState } from "react";
+import { GetStaticProps } from "next";
+import { useState } from "react";
 import { Button, Htag, P, Rating, Tag } from "../components";
-import { Layout, withLayout } from "../layout/Layout";
+import { withLayout } from "../layout/Layout";
+import axios from 'axios';
+import { MenuItem } from "../interfaces/menu.interface";
 
-function Home(): JSX.Element {
-  const [rating, setRating] = useState<number>(4)
+function Home({ menu }: HomeProps): JSX.Element {
+  const [rating, setRating] = useState<number>(4);
 
   return (
     <>
-      <Htag tag="h3">dftrhrt</Htag>
-      <Button appearance='primary' arrow="right">Еу</Button>
-      <Button appearance='ghost' arrow="down">цуацйу</Button>
-      <P size="L">sdgaserg</P>
-      <P size="S">argre</P>
-      <P>argaerw</P>
-      <Tag size='S' color="red">rergergth</Tag>
-      <Tag href="#" color='primary'>dhger</Tag>
-      <Tag size='S'>rth</Tag>
-      <Rating rating={rating} isEditable={true} setRating={setRating}></Rating>
+      <Htag tag="h3">Заголовок</Htag>
+      <Button appearance='primary' arrow="right">кнопка</Button>
+      <Button appearance='ghost' arrow="down">кнопка</Button>
+      <P size="L">параграф</P>
+      <P size="S">параграф</P>
+      <P>параграф</P>
+      <Tag size='S' color="red">Tag</Tag>
+      <Tag href="#" color='primary'>Tag</Tag>
+      <Tag size='S'>Tag</Tag>
+      <Rating rating={rating} isEditable setRating={setRating}></Rating>
+      <ul>
+        {menu.map(m => (<li key={m._id.secondCategory}>{m._id.secondCategory}</li>))}
+      </ul>
     </>
   );
 }
 
-export default withLayout(Home)
+export default withLayout(Home);
+
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const firstCategory = 0;
+
+  const { data: menu } = await axios.post<MenuItem[]>(process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find', {
+    firstCategory
+  });
+  return {
+    props: {
+      menu,
+      firstCategory
+    }
+  };
+
+};
+
+
+interface HomeProps extends Record<string, unknown> {
+  menu: MenuItem[];
+  firstCategory: number;
+}
+
+

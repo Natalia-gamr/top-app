@@ -15,5 +15,5 @@ export const P = ({ children, size = "M", className, ...props }: PProps): JSX.El
 
         </p>
 
-    )
-}
+    );
+};
