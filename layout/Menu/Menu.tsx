@@ -70,7 +70,7 @@ export const Menu = (): JSX.Element => {
         return (
             pages.map(p => (
                 <Link href={`/${route}/${p.alias}`} legacyBehavior>
-                    <a className={cn(styles.thirdLevel, {
+                    <a key={p.alias} className={cn(styles.thirdLevel, {
                         [styles.thirdLevelActive]: `/${route}/${p.alias}` == router.asPath
                     })}>
                         {p.category}
