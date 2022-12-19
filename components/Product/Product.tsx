@@ -13,7 +13,7 @@ import Image from 'next/image';
 
 export const Product = ({ product, className, ...props }: ProductProps): JSX.Element => {
     return (
-        <Card className={styles.product}>
+        <Card className={styles.product} {...props}>
             <div className={styles.logo}>
                 <Image
                     src={process.env.NEXT_PUBLIC_DOMAIN + product.image}
@@ -59,7 +59,7 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
                     <div>{product.disadvantages}</div>
                 </div>}
             </div>
-            <Divider className={styles.hr} />
+            <Divider className={cn(styles.hr, styles.hr2)} />
 
 
             <div className={styles.actions}>
