@@ -26,6 +26,7 @@
 	grid-template-columns: auto 1fr;
 	gap: 20px;
 }
+
 .panel {
 	position: relative;
 
@@ -36,13 +37,14 @@
 }
 
 .success {
-	
 	background: var(--green-light);
 }
+
 .error {
 	background: var(--red-light);
 }
-.error .close path{
+
+.error .close path {
 	stroke: var(--red);
 }
 
@@ -63,19 +65,19 @@
 @media (max-width: 1200px) {
 	.reviewForm {
 		grid-template-columns: [start] 1fr 1fr  [end];
-		
 	}
+
 	.title {
 		justify-self: normal;
 	}
+
 	.rating {
 		grid-column: start/ end;
 	}
 }
+
 @media (max-width: 640px) {
 	.reviewForm {
 		grid-template-columns: [start]  1fr  [end];
-		
 	}
-	
 }
