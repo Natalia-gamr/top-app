@@ -33,6 +33,15 @@ a {
 	--font-family: 'Noto Sans', sans-serif;
 }
 
+.visualyHidden {
+	position: absolute;
+
+	overflow: hidden;
+
+	width: 0;
+	height: 0;
+}
+
 @media (prefers-color-scheme: dark) {
 	html {
 		color-scheme: dark;
