@@ -38,13 +38,13 @@ export const Product = motion(forwardRef(({ product, className, ...props }: Prod
         <div className={className} {...props} ref={ref}>
             <Card className={styles.product} >
                 <div className={styles.logo}>
-                    <Image
+                    {/* <Image
                         src={process.env.NEXT_PUBLIC_DOMAIN + product.image}
                         alt={product.title}
                         width={70}
                         height={70}
-                    />
-                    {/* <img src={process.env.NEXT_PUBLIC_DOMAIN + product.image} alt={product.title} /> */}
+                    /> */}
+                    <img src={process.env.NEXT_PUBLIC_DOMAIN + product.image} alt={product.title} />
                 </div>
                 <div className={styles.title}><Htag tag='h3'>{product.title}</Htag></div>
                 <div className={styles.price}>
@@ -92,8 +92,6 @@ export const Product = motion(forwardRef(({ product, className, ...props }: Prod
                     </div>}
                 </div>
                 <Divider className={cn(styles.hr, styles.hr2)} />
-
-
                 <div className={styles.actions}>
                     <Button appearance='primary'>Узнать подробнее</Button>
                     <Button

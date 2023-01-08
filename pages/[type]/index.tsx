@@ -3,7 +3,7 @@ import axios from 'axios';
 import { MenuItem } from "../../interfaces/menu.interface";
 import { withLayout } from "../../layout/Layout";
 import { firstLevelMenu } from "../../helpers/helpers";
-import { ParsedUrlQuery } from "node:querystring";
+import { ParsedUrlQuery } from "querystring";
 import { API } from "../../helpers/api";
 
 function Type({ firstCategory }: TypeProps): JSX.Element {
@@ -22,7 +22,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     // console.log(paths);
     return {
         paths: firstLevelMenu.map(m => '/' + m.route),
-        fallback: true
+        fallback: false
     };
 };
 
